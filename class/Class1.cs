@@ -112,7 +112,7 @@
         }
         public List<IFicha> juega(List<IFicha> tablero, IFilter<IFicha> ley)
         {
-            if (tablero.Count==0)
+            if (tablero.Count == 0)
             {
                 tablero.Add(list[0]);
                 list.Remove(list[0]);
@@ -124,11 +124,17 @@
                     if (ley.Apply(list[i], tablero))
                     {
                         IFicha ficha = list[i];
-                        if (ficha.value.Item1 == tablero[tablero.Count - 1].value.Item2) tablero.Add(ficha);
-                        else if (ficha.value.Item2 == tablero[0].value.Item1) tablero.Insert(0, ficha);
-                        ficha = new Ficha(ficha.value.Item2, ficha.value.Item1);
-                        if (ficha.value.Item1 == tablero[tablero.Count - 1].value.Item2) tablero.Add(ficha);
-                        else if (ficha.value.Item2 == tablero[0].value.Item1) tablero.Insert(0, ficha);
+                        if (ficha.value.Item1 == tablero[tablero.Count - 1].value.Item2 || ficha.value.Item2 == tablero[0].value.Item1)
+                        {
+                            if (ficha.value.Item1 == tablero[tablero.Count - 1].value.Item2) tablero.Add(ficha);
+                            else if (ficha.value.Item2 == tablero[0].value.Item1) tablero.Insert(0, ficha);
+                        }
+                        else
+                        {
+                            ficha = new Ficha(ficha.value.Item2, ficha.value.Item1);
+                            if (ficha.value.Item1 == tablero[tablero.Count - 1].value.Item2) tablero.Add(ficha);
+                            else if (ficha.value.Item2 == tablero[0].value.Item1) tablero.Insert(0, ficha);
+                        }
                         list.Remove(list[i]);
                         break;
                     }

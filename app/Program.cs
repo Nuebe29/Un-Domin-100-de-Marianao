@@ -32,14 +32,14 @@ juego[1] = player2;
 juego[2] = player3;
 juego[3] = player4;
 Ley ley = new Ley();
-var winner = player5;
+var winner = 5;
 
 while(true){
     List<IFicha> a = tablero;
     for(int i = 0; i<4;i++){
         tablero = juego[i].juega(tablero,ley);
         if(juego[i].list.Count==0){
-            winner = juego[i];
+            winner = i;
             break;
         }
         // if(a==tablero){
@@ -51,7 +51,7 @@ while(true){
         // }
 
     }
-    if(winner!=player5)break;
+    if(winner!=5)break;
     
 
     
