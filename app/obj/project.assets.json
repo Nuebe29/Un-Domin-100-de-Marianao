@@ -1,0 +1,88 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "class/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/class.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/class.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "class/1.0.0": {
+      "type": "project",
+      "path": "../class/class.csproj",
+      "msbuildProject": "../class/class.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "class >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Laptop\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Laptop\\Desktop\\esqueleto\\app\\app.csproj",
+      "projectName": "app",
+      "projectPath": "C:\\Users\\Laptop\\Desktop\\esqueleto\\app\\app.csproj",
+      "packagesPath": "C:\\Users\\Laptop\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Laptop\\Desktop\\esqueleto\\app\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Laptop\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Users\\Laptop\\Desktop\\esqueleto\\class\\class.csproj": {
+              "projectPath": "C:\\Users\\Laptop\\Desktop\\esqueleto\\class\\class.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
