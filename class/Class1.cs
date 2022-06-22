@@ -1,15 +1,23 @@
 ﻿namespace Domino
 {
-    public interface IGame<Tmano> where Tmano : Imano<IFicha>
+    public class DominoBoard<T>{
+        List<IFicha<T>> tablero;
+        T left;
+        T right;
+        public DominoBoard(){
+
+        }
+    }
+    public interface IGame<Tmano,T> where Tmano : Imano<IFicha<T>,T>
     {
         public Tmano[] players { get; }
     }
-    public interface IFicha
+    public interface IFicha<T>
     {
-        public (int, int) value { get; }
-        public int sum { get; }
+        public (T, T) value { get; }
+        public int peso { get; }
     }
-    public class Ficha : IFicha
+    public class Ficha : IFicha<int>
     {
         int c;
         int d;
@@ -21,20 +29,20 @@
 
         public (int, int) value => (c, d);
 
-        public int sum => c + d;
+        public int peso => c + d;
     }
 
-    public interface IFilter<T>
+    public interface IFilter<TFicha>
     {
-        bool Apply(IFicha ficha, List<IFicha> tablero);
+        bool Apply(TFicha ficha, List<TFicha> tablero);
     }
-    public class Ley : IFilter<IFicha>
+    public class Ley : IFilter<Ficha>
     {
         public Ley()
         {
         }
 
-        public bool Apply(IFicha ficha, List<IFicha> tablero)
+        public bool Apply(Ficha ficha, List<Ficha> tablero)
         {
             if (ficha.value.Item1 == tablero[tablero.Count - 1].value.Item2) { return true; }
             else if (ficha.value.Item2 == tablero[0].value.Item1) { return true; }
@@ -44,7 +52,7 @@
             return false;
 
         }
-        public IFicha vira(IFicha ficha)
+        public Ficha vira(Ficha ficha)
         {
             Ficha devolver = new Ficha(ficha.value.Item2, ficha.value.Item1);
             return devolver;
@@ -52,7 +60,7 @@
         }
     }
 
-    public interface Imano<TFicha> where TFicha : IFicha
+    public interface Imano<TFicha,T> where TFicha : IFicha<T>
     {
         void Add(TFicha ficha);
         void Remove(TFicha ficha);
@@ -61,14 +69,14 @@
 
         int Total { get; }
     }
-    public class mano<TFicha> : Imano<TFicha> where TFicha : IFicha
+    public class mano<TFicha,T> : Imano<TFicha,T> where TFicha : IFicha<T>
     {
-        public List<IFicha> list;
+        public List<TFicha> list;
 
 
         public mano()
         {
-            list = new List<IFicha>();
+            list = new List<TFicha>();
 
         }
 
@@ -90,14 +98,14 @@
             {
                 for (int j = 0; j < list.Count - 1; j++)
                 {
-                    if (list[j].sum < list[j + 1].sum) Swap(j, j + 1);
+                    if (list[j].peso < list[j + 1].peso) Swap(j, j + 1);
                 }
             }
 
         }
         private void Swap(int a, int b)
         {
-            IFicha temp = list[a];
+            TFicha temp = list[a];
             list[a] = list[b];
             list[b] = temp;
         }
@@ -106,11 +114,11 @@
             int devolver = 0;
             for (int i = 0; i < list.Count; i++)
             {
-                devolver += list[i].sum;
+                devolver += list[i].peso;
             }
             return devolver;
         }
-        public List<IFicha> juega(List<IFicha> tablero, IFilter<IFicha> ley)
+        public List<IFicha<T>> juega(List<IFicha<T>> tablero, IFilter<IFicha<T>> ley)
         {
             if (tablero.Count == 0)
             {
@@ -123,7 +131,7 @@
                 {
                     if (ley.Apply(list[i], tablero))
                     {
-                        IFicha ficha = list[i];
+                        IFicha<T> ficha = list[i];
                         if (ficha.value.Item1 == tablero[tablero.Count - 1].value.Item2 || ficha.value.Item2 == tablero[0].value.Item1)
                         {
                             if (ficha.value.Item1 == tablero[tablero.Count - 1].value.Item2) tablero.Add(ficha);
@@ -147,7 +155,7 @@
             int a = 0;
             for (int i = 0; i < list.Count; i++)
             {
-                a += list[i].sum;
+                a += list[i].peso;
             }
             return a;
         }
