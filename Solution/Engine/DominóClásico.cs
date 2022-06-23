@@ -1,4 +1,6 @@
-﻿namespace Engine;
+﻿using System.Collections;
+
+namespace Engine;
 
 public class FichaClásica
 {
@@ -20,18 +22,47 @@ public class FichaClásica
     }
 }
 
-public class TableroClásico
+public class Nodo
+{
+    public Nodo()
+    {
+        Entrada = -1;
+        Jugabilidad = true;
+    }
+    
+    public int Entrada { get; set; }
+    
+    public bool Jugabilidad { get; set; }
+}
+public class TableroClásico : IEnumerable<Nodo>
 {
     public TableroClásico()
     {
-        Contenido = new List<FichaClásica>();
+        Hoja = new Nodo();
+        Ramas = new List<TableroClásico>();
     }
 
-    public List<FichaClásica> Contenido { get; private set; }
-    
-    public int Entrada1 { get; set; }
+    public  Nodo Hoja { get; }
+    public List<TableroClásico> Ramas { get; }
 
-    public int Entrada2 { get; set; }
+
+    IEnumerator<Nodo> IEnumerable<Nodo>.GetEnumerator()
+    {
+        yield return Hoja;
+
+        foreach (var hijo in Ramas)
+        {
+            foreach (Nodo item in hijo)
+            {
+                yield return item;
+            }
+        }
+    }
+
+    public IEnumerator GetEnumerator()
+    {
+        return GetEnumerator();
+    }
 }
 
 public class Mano
@@ -71,13 +102,9 @@ public static class Leyes
 {
     public static bool EsJugable(FichaClásica ficha, TableroClásico tablero)
     {
-        return EsJugable(ficha, tablero.Entrada1) || EsJugable(ficha, tablero.Entrada2);
+        return ficha.Cara1 == tablero.Hoja.Entrada || ficha.Cara2 == tablero.Hoja.Entrada;
     }
     
-    public static bool EsJugable(FichaClásica ficha, int entrada)
-    {
-        return ficha.Cara1 == entrada || ficha.Cara2 == entrada;
-    }
 
     public static bool EsJugable(Mano mano, TableroClásico tablero)
     {
@@ -123,24 +150,21 @@ public static class JuegoClásico
 {
     public static void Colocar(FichaClásica ficha, TableroClásico tablero)
     {
-        if (tablero.Contenido.Count == 0)
+        if (tablero.Hoja.Entrada == -1)
         {
-            tablero.Contenido.Add(ficha);
-            tablero.Entrada1 = ficha.Cara1;
-            tablero.Entrada2 = ficha.Cara2;
+            tablero.Ramas.Add(new TableroClásico());
+            tablero.Ramas.Add(new TableroClásico());
+            tablero.Ramas[0].Hoja.Entrada = ficha.Cara1;
+            tablero.Ramas[1].Hoja.Entrada = ficha.Cara2;
         }
         
-        else if (Leyes.EsJugable(ficha, tablero.Entrada1))
+        else if (Leyes.EsJugable(ficha, tablero))
         {
-            tablero.Contenido.Add(ficha);
-            tablero.Entrada1 = ficha.Cara1 == tablero.Entrada1 ? ficha.Cara2 : ficha.Cara1;
+            tablero.Ramas.Add(new TableroClásico());
+            tablero.Ramas[0].Hoja.Entrada = ficha.Cara1 == tablero.Hoja.Entrada ? ficha.Cara2 : ficha.Cara1;
         }
         
-        else if (Leyes.EsJugable(ficha, tablero.Entrada2))
-        {
-            tablero.Contenido.Add(ficha);
-            tablero.Entrada2 = ficha.Cara1 == tablero.Entrada2 ? ficha.Cara2 : ficha.Cara1;
-        }
+        
 
         else throw new Exception("Esa Jugada no es posible");
     }

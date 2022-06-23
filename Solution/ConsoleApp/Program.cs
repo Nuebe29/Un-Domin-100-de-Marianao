@@ -36,6 +36,7 @@ while (true)
 
       Console.WriteLine($"Turno de {jugadores[i % 4].Name}");
       
+      
       if (Leyes.EsJugable(manos[i % 4], tablero))
       {
             ficha = jugadores[i % 4].Jugada(manos[i % 4].Contenido, tablero);
