@@ -12,7 +12,7 @@ manos.Add(new Mano());
 manos.Add(new Mano());
 manos.Add(new Mano());
 
-TableroClásico tablero = new TableroClásico();
+TableroClásico tablero = new TableroClásico(-1,-1);
 
 List<FichaClásica> mazo = Generador.Genera(9);
 Repartidor.Reparte(mazo, 10, manos);

@@ -22,37 +22,45 @@ public class FichaClásica
     }
 }
 
-public class Nodo
+public class Nodo<T>
 {
-    public Nodo()
+    public Nodo(T entrada, int turno)
     {
-        Entrada = -1;
+        Entrada = entrada;
+        Turno = turno;
         Jugabilidad = true;
     }
     
-    public int Entrada { get; set; }
-    
+    public T Entrada { get; set; }
+    public int Turno { get; }
     public bool Jugabilidad { get; set; }
 }
-public class TableroClásico : IEnumerable<Nodo>
+
+public interface ITablero<T> : IEnumerable<Nodo<T>>
 {
-    public TableroClásico()
+    public  Nodo<T> Hoja { get; }
+    public List<TableroClásico> Ramas { get; }
+
+}
+public class TableroClásico : ITablero<int>
+{
+    public TableroClásico(int entrada, int turno)
     {
-        Hoja = new Nodo();
+        Hoja = new Nodo<int>(entrada,turno);
         Ramas = new List<TableroClásico>();
     }
 
-    public  Nodo Hoja { get; }
+    public  Nodo<int> Hoja { get; }
     public List<TableroClásico> Ramas { get; }
 
 
-    IEnumerator<Nodo> IEnumerable<Nodo>.GetEnumerator()
+    IEnumerator<Nodo<int>> IEnumerable<Nodo<int>>.GetEnumerator()
     {
         yield return Hoja;
 
         foreach (var hijo in Ramas)
         {
-            foreach (Nodo item in hijo)
+            foreach (Nodo<int> item in hijo)
             {
                 yield return item;
             }
@@ -152,16 +160,16 @@ public static class JuegoClásico
     {
         if (tablero.Hoja.Entrada == -1)
         {
-            tablero.Ramas.Add(new TableroClásico());
-            tablero.Ramas.Add(new TableroClásico());
-            tablero.Ramas[0].Hoja.Entrada = ficha.Cara1;
-            tablero.Ramas[1].Hoja.Entrada = ficha.Cara2;
+            tablero.Ramas.Add(new TableroClásico(ficha.Cara1, tablero.Hoja.Turno+1));
+            tablero.Ramas.Add(new TableroClásico(ficha.Cara2, tablero.Hoja.Turno+1));
+            tablero.Hoja.Jugabilidad = false;
         }
         
         else if (Leyes.EsJugable(ficha, tablero))
         {
-            tablero.Ramas.Add(new TableroClásico());
-            tablero.Ramas[0].Hoja.Entrada = ficha.Cara1 == tablero.Hoja.Entrada ? ficha.Cara2 : ficha.Cara1;
+            int e = ficha.Cara1 == tablero.Hoja.Entrada ? ficha.Cara2 : ficha.Cara1;
+            tablero.Ramas.Add(new TableroClásico(e, tablero.Hoja.Turno+1));
+            tablero.Hoja.Jugabilidad = false;
         }
         
         
