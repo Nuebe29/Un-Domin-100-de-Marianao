@@ -1,0 +1,12 @@
+D:\Programación\Un-Domin-100-de-Marianao\Solution\Engine\bin\Debug\net6.0\Engine.deps.json
+D:\Programación\Un-Domin-100-de-Marianao\Solution\Engine\bin\Debug\net6.0\Engine.dll
+D:\Programación\Un-Domin-100-de-Marianao\Solution\Engine\bin\Debug\net6.0\ref\Engine.dll
+D:\Programación\Un-Domin-100-de-Marianao\Solution\Engine\bin\Debug\net6.0\Engine.pdb
+D:\Programación\Un-Domin-100-de-Marianao\Solution\Engine\obj\Debug\net6.0\Engine.csproj.AssemblyReference.cache
+D:\Programación\Un-Domin-100-de-Marianao\Solution\Engine\obj\Debug\net6.0\Engine.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programación\Un-Domin-100-de-Marianao\Solution\Engine\obj\Debug\net6.0\Engine.AssemblyInfoInputs.cache
+D:\Programación\Un-Domin-100-de-Marianao\Solution\Engine\obj\Debug\net6.0\Engine.AssemblyInfo.cs
+D:\Programación\Un-Domin-100-de-Marianao\Solution\Engine\obj\Debug\net6.0\Engine.csproj.CoreCompileInputs.cache
+D:\Programación\Un-Domin-100-de-Marianao\Solution\Engine\obj\Debug\net6.0\Engine.dll
+D:\Programación\Un-Domin-100-de-Marianao\Solution\Engine\obj\Debug\net6.0\ref\Engine.dll
+D:\Programación\Un-Domin-100-de-Marianao\Solution\Engine\obj\Debug\net6.0\Engine.pdb
