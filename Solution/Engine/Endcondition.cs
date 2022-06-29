@@ -1,5 +1,6 @@
 namespace Engine;
 
-public interface IEndcondition<T>{
-    public bool Condicion()
+public interface IEndcondition<T>
+{
+    public bool Condicion();
 }

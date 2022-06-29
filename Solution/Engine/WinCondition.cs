@@ -2,11 +2,11 @@ namespace Engine;
 
 public interface IWincondition<T>
 {
-    public int DecidirGanador(List<Mano<IFicha<T>>> list);
+    public int DecidirGanador(List<Mano<T>> list);
 }
-public class ganadorclsico : IWincondition<int>
+public class GanadorCálsico : IWincondition<int>
 {
-    public int DecidirGanador(List<Mano<IFicha<int>>> list)
+    public int DecidirGanador(List<Mano<int>> list)
     {
         int ganador = 0;
         int min = int.MaxValue;

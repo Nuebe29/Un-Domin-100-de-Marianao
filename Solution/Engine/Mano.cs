@@ -16,7 +16,7 @@ public class Mano<T>
 
             foreach (var ficha in Contenido)
             {
-                peso += ficha.peso;
+                peso += ficha.Peso;
             }
 
             return peso;
