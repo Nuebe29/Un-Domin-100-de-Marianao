@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\ConsoleApp\\ConsoleApp.csproj": {}
+    "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\ConsoleApp\\ConsoleApp.csproj": {}
   },
   "projects": {
-    "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\ConsoleApp\\ConsoleApp.csproj": {
+    "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\ConsoleApp\\ConsoleApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\ConsoleApp\\ConsoleApp.csproj",
+        "projectUniqueName": "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\ConsoleApp\\ConsoleApp.csproj",
         "projectName": "ConsoleApp",
-        "projectPath": "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\ConsoleApp\\ConsoleApp.csproj",
+        "projectPath": "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\ConsoleApp\\ConsoleApp.csproj",
         "packagesPath": "C:\\Users\\Anthuán\\.nuget\\packages\\",
-        "outputPath": "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\ConsoleApp\\obj\\",
+        "outputPath": "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\ConsoleApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Anthuán\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\Engine\\Engine.csproj": {
-                "projectPath": "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\Engine\\Engine.csproj"
+              "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\Engine\\Engine.csproj": {
+                "projectPath": "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\Engine\\Engine.csproj"
               }
             }
           }
@@ -60,14 +60,14 @@
         }
       }
     },
-    "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\Engine\\Engine.csproj": {
+    "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\Engine\\Engine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\Engine\\Engine.csproj",
+        "projectUniqueName": "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\Engine\\Engine.csproj",
         "projectName": "Engine",
-        "projectPath": "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\Engine\\Engine.csproj",
+        "projectPath": "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\Engine\\Engine.csproj",
         "packagesPath": "C:\\Users\\Anthuán\\.nuget\\packages\\",
-        "outputPath": "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\Engine\\obj\\",
+        "outputPath": "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\Engine\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Anthuán\\AppData\\Roaming\\NuGet\\NuGet.Config"

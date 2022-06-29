@@ -1,12 +1,5 @@
 ﻿namespace Engine;
 
-
-
-
-
-
-
-
 public static class Leyes
 {
     public static bool EsJugable(FichaClásica ficha, TableroClásico tablero)

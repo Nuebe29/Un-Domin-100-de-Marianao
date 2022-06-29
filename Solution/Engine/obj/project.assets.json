@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\Engine\\Engine.csproj",
+      "projectUniqueName": "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\Engine\\Engine.csproj",
       "projectName": "Engine",
-      "projectPath": "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\Engine\\Engine.csproj",
+      "projectPath": "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\Engine\\Engine.csproj",
       "packagesPath": "C:\\Users\\Anthuán\\.nuget\\packages\\",
-      "outputPath": "D:\\Programación\\Un-Domin-100-de-Marianao\\Solution\\Engine\\obj\\",
+      "outputPath": "D:\\Programación\\Un-Domin-100-de-Marianao (Main)\\Solution\\Engine\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Anthuán\\AppData\\Roaming\\NuGet\\NuGet.Config"
