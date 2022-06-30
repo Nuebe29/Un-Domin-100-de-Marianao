@@ -1,12 +1,12 @@
 namespace Engine;
 
-public class Mano<IFicha>
+public class Mano<T>
 {
     public Mano()
     {
-        Contenido = new List<IFicha>();
+        Contenido = new List<IFicha<T>>();
     }
-    public List<IFicha> Contenido { get; }
+    public List<IFicha<T>> Contenido { get; }
 
     public int Peso
     {
@@ -23,11 +23,11 @@ public class Mano<IFicha>
         }
     }
 
-    public void Add(IFicha ficha)
+    public void Add(IFicha<T> ficha)
     {
         Contenido.Add(ficha);
     }
-    public void Remove(IFicha ficha)
+    public void Remove(IFicha<T> ficha)
     {
         Contenido.Remove(ficha);
     }
