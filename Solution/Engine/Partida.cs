@@ -1,6 +1,7 @@
 namespace Engine;
 
 public class Partida<T>{
+<<<<<<< HEAD
     
     
     
@@ -51,7 +52,22 @@ public class Partida<T>{
 
     }
 }
+=======
+    private IMatcher<T> matcher;
+    private IWincondition<T> wincondition;
+    private Referee referee;
+    private List<Player<T>> players;
+    private Endcondition endcondition;
+    private IGenerador<T> generador;
+    private IDealer<T> dealer;
+    private List<Mano<T>> manos;
+    private Tablero<T> tablero;
+>>>>>>> 0fbaf73d60127f9bca9bb720a32eddcf6a5a070a
     
 
 
 
+<<<<<<< HEAD
+=======
+}
+>>>>>>> 0fbaf73d60127f9bca9bb720a32eddcf6a5a070a
