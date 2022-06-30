@@ -2,15 +2,9 @@ namespace Engine;
 
 
 public interface IGenerador<T>{
-<<<<<<< HEAD
     public List<IFicha<T>> Generamazo(T value);
 }
 public class Generadorclasico:IGenerador<int>
-=======
-    public List<T> Generamazo(int value);
-}
-public class Generadorclasico:IGenerador<IFicha<int>>
->>>>>>> 0fbaf73d60127f9bca9bb720a32eddcf6a5a070a
 {
     
 

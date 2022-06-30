@@ -1,7 +1,6 @@
 namespace Engine;
 
 public class Partida<T>{
-<<<<<<< HEAD
     
     
     
@@ -16,7 +15,7 @@ public class Partida<T>{
         public int? winner;
 
 
-    public Partida(ITablero<T> tablero, List<Player<T>> players, IEndcondition<T> endcondition, IGenerador<T> generador,T generate, IDealer<T> dealer,int cant, List<Mano<T>> manos, IMatcher<T> matcher, IWincondition<T> wincondition)
+    public Partida(ITablero<T> tablero, List<Player<T>> players, IEndcondition<T> endcondition, IGenerador<T> generador,T generate, IDealer<T> dealer,int cant, IMatcher<T> matcher, IWincondition<T> wincondition)
     {
         this.tablero = tablero;
         this.players = players;
@@ -37,6 +36,7 @@ public class Partida<T>{
                 if(endcondition.Condicion(manos,pases))break;
                 List<IFicha<T>> posibles = new List<IFicha<T>>();
                 foreach(var ficha in manos[i].Contenido){
+                    //aki va recorrer los nodos y preg si matchea cada 1 de las fichas
                     if(matcher.matchea(ficha, tablero))posibles.Add(ficha);
 
                 }
@@ -52,22 +52,7 @@ public class Partida<T>{
 
     }
 }
-=======
-    private IMatcher<T> matcher;
-    private IWincondition<T> wincondition;
-    private Referee referee;
-    private List<Player<T>> players;
-    private Endcondition endcondition;
-    private IGenerador<T> generador;
-    private IDealer<T> dealer;
-    private List<Mano<T>> manos;
-    private Tablero<T> tablero;
->>>>>>> 0fbaf73d60127f9bca9bb720a32eddcf6a5a070a
     
 
 
 
-<<<<<<< HEAD
-=======
-}
->>>>>>> 0fbaf73d60127f9bca9bb720a32eddcf6a5a070a

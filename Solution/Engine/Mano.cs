@@ -16,11 +16,7 @@ public class Mano<T>
 
             foreach (var ficha in Contenido)
             {
-<<<<<<< HEAD
-                peso += ficha.peso;
-=======
                 peso += ficha.Peso;
->>>>>>> 0fbaf73d60127f9bca9bb720a32eddcf6a5a070a
             }
 
             return peso;

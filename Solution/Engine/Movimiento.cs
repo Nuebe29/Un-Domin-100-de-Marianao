@@ -2,9 +2,10 @@
 
 public class Movimiento<T>
 {
-    public Movimiento()
+    public Movimiento(T a, T b)
     {
-        
+        Entrada = a;
+        Salida  = b;
     }
     
     public bool EsPase { get; }
