@@ -25,13 +25,14 @@ public class PartidaClásica
     public MatcherClasico Matcher { get; }
     private RefereeClásico Referee { get; }
     private GanadorCálsico Wincondition;
-    public int winner { get; set; }
-    public void run()
+    public Player<int> run()
     {
         int t = 0;
+        
 
-        while (true)
+        while (!Endcondition.Condicion(Manos,Referee.Pases))
         {
+            
             var i = t % Players.Count;
 
             var PosiblesJugadas = Referee.SacarJugadas(Tablero, Manos[i]);
@@ -40,6 +41,7 @@ public class PartidaClásica
             
             t += 1;
         }
+        return Players[Wincondition.DecidirGanador(Manos)];
     }
 }
     

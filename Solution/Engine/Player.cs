@@ -4,8 +4,10 @@ namespace Engine;
 public class Player<T>
 {   
     private Estrategia<T> estrategia;
-    public Player(Estrategia<T> a){
+    public string name{get;}
+    public Player(Estrategia<T> a, string name){
         this.estrategia = a;
+        this.name=name;
     }
     public int Juega(ITablero<T> tablero, List<Movimiento<T>> posiblesjugadas, Mano<T> hand)
     {

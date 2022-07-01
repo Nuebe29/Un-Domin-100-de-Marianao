@@ -8,8 +8,8 @@ public class MatcherClasico : IMatcher<int>
     
     
     public bool matchea(IFicha<int> ficha, Nodo<int> nodo)
-    {
-        if(ficha.Cara1== nodo.Entrada|| ficha.Cara2== nodo.Entrada)return true;
+    {   
+        if(nodo.Entrada==-1|| ficha.Cara1== nodo.Entrada|| ficha.Cara2== nodo.Entrada)return true;
         return false;
     }
 }

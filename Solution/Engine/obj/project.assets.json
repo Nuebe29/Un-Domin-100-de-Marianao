@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Anthuán\\.nuget\\packages\\": {}
+    "C:\\Users\\Laptop\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programación\\Un-Domin-100-de-Marianao (Mi rama)\\Solution\\Engine\\Engine.csproj",
+      "projectUniqueName": "C:\\Users\\Laptop\\Desktop\\Nueva carpeta (4)\\Un-Domin-100-de-Marianao\\Solution\\Engine\\Engine.csproj",
       "projectName": "Engine",
-      "projectPath": "D:\\Programación\\Un-Domin-100-de-Marianao (Mi rama)\\Solution\\Engine\\Engine.csproj",
-      "packagesPath": "C:\\Users\\Anthuán\\.nuget\\packages\\",
-      "outputPath": "D:\\Programación\\Un-Domin-100-de-Marianao (Mi rama)\\Solution\\Engine\\obj\\",
+      "projectPath": "C:\\Users\\Laptop\\Desktop\\Nueva carpeta (4)\\Un-Domin-100-de-Marianao\\Solution\\Engine\\Engine.csproj",
+      "packagesPath": "C:\\Users\\Laptop\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Laptop\\Desktop\\Nueva carpeta (4)\\Un-Domin-100-de-Marianao\\Solution\\Engine\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Anthuán\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Laptop\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -58,7 +58,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

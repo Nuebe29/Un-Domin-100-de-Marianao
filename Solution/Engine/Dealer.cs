@@ -13,8 +13,9 @@ public class DealerClasico : IDealer<int>
         }
         for(int i = 0; i< jugadores;i++){
             for(int j = 0;j<cant;j++){
-                list[i].Contenido.Add(mazo[r.Next(mazo.Count)]);
-                mazo.Remove(mazo[r.Next(mazo.Count)]);
+                int aux = r.Next(mazo.Count);
+                list[i].Contenido.Add(mazo[aux]);
+                mazo.Remove(mazo[aux]);
             }
         }
         return list;

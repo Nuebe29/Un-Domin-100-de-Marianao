@@ -5,7 +5,9 @@ public class RefereeClásico
     public RefereeClásico(IMatcher<int> matcher)
     {
         Matcher = matcher;
+        Pases = 0;
     }
+    public int Pases{get ; set;}
 
     private IMatcher<int> Matcher;
 
@@ -36,13 +38,19 @@ public class RefereeClásico
     {
         if (!jugada.EsPase)
         {
+            Pases = 0;
             mano.Remove(jugada.Ficha);
 
             foreach (TableroClásico t in tablero)
             {
                 if (t.Hoja == jugada.Nodo)
-                {
-                    if (jugada.Ficha.Cara1 == t.Hoja.Entrada)
+                {   
+                    if(jugada.Nodo.Entrada==-1 ){
+                        t.Ramas.Add(new TableroClásico(jugada.Ficha.Cara2, 1));
+                        t.Ramas.Add(new TableroClásico(jugada.Ficha.Cara1, 1));
+                        t.Hoja.Jugabilidad = false;
+                    }
+                    else if (jugada.Ficha.Cara1 == t.Hoja.Entrada)
                     {
                         t.Hoja.Jugabilidad = false;
                         t.Ramas.Add(new TableroClásico(jugada.Ficha.Cara2, 1));
@@ -55,6 +63,7 @@ public class RefereeClásico
                 }
             }
         }
+        else Pases++;
     }
 
 }

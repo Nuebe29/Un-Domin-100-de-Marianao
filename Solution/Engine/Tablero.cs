@@ -46,10 +46,19 @@ public class TableroClásico : ITablero<int>
         }
     }
 
-    public IEnumerator GetEnumerator()
+     public IEnumerator GetEnumerator()
     {
-        return GetEnumerator();
+        yield return this;
+
+        foreach (var hijo in Ramas)
+        {
+            foreach (TableroClásico item in hijo)
+            {
+                yield return item;
+            }
+        }
     }
 
+   
    
 }

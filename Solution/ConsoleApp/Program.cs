@@ -1,20 +1,17 @@
 ﻿using Engine;
 
-Engine.TableroClásico tableroclasico= new TableroClásico(0,0);
-Engine.Generadorclasico generadorclasico = new Engine.Generadorclasico();
-Engine.EndconditionClasico endconditionClasico= new Engine.EndconditionClasico();
+
 List<Player<int>> list = new List<Player<int>>();
-list.Add(new Player<int>(Estrategiarandom));
-list.Add(new Player<int>(Estrategiarandom));
-list.Add(new Player<int>(Estrategiarandom));
-list.Add(new Player<int>(Estrategiarandom));
-Engine.DealerClasico dealerClasico= new Engine.DealerClasico();
-Engine.GanadorCálsico ganadorCálsico = new Engine.GanadorCálsico();
-Engine.MatcherClasico matcherClasico = new MatcherClasico();
+list.Add(new Player<int>(Estrategias<int>.Estrategiarandom, "yo"));
+list.Add(new Player<int>(Estrategias<int>.Estrategiarandom, "tu"));
+list.Add(new Player<int>(Estrategias<int>.Estrategiarandom,"el"));
+list.Add(new Player<int>(Estrategias<int>.Estrategiarandom,"ella"));
 
 
 
 
-Engine.Partida<int> a = new Engine.Partida<int>(tableroclasico, list, endconditionClasico, generadorclasico, 6, dealerClasico,7,matcherClasico,ganadorCálsico);
-a.run();
+
+Engine.PartidaClásica a = new Engine.PartidaClásica( list,  6);
+var b = a.run();
+System.Console.WriteLine(b.name);
 
