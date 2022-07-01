@@ -1,55 +1,45 @@
 namespace Engine;
 
-public class Partida<T>{
-    
-    
-    
-        public readonly ITablero<T> tablero;
-        private List<Player<T>> players;
-        private IEndcondition<T> endcondition;
-        private IGenerador<T> generador;
-        private IDealer<T> dealer;
-        public readonly List<Mano<T>> manos;
-        private IMatcher<T> matcher;
-        private IWincondition<T> wincondition;
-        public int? winner;
+public class PartidaClásica
+{
 
-
-    public Partida(ITablero<T> tablero, List<Player<T>> players, IEndcondition<T> endcondition, IGenerador<T> generador,T generate, IDealer<T> dealer,int cant, IMatcher<T> matcher, IWincondition<T> wincondition)
+    public PartidaClásica(List<Player<int>> players, int n)
     {
-        this.tablero = tablero;
-        this.players = players;
-        this.endcondition = endcondition;
-        this.generador = generador;
-        this.dealer = dealer;
-        this.manos = dealer.Reparte(generador.Generamazo(generate),players.Count, cant);
-        this.matcher = matcher;
-        this.wincondition = wincondition;
+        Tablero = new TableroClásico(-1, -1);
+        Players = players;
+        Endcondition = new EndconditionClasico();
+        Generador = new Generadorclasico();
+        Dealer = new DealerClasico();
+        Manos = Dealer.Reparte(Generador.Generamazo(n), players.Count, n+1 );
+        Matcher = new MatcherClasico();
+        Referee = new RefereeClásico(Matcher);
+        Wincondition = new GanadorCálsico();
     }
-    public void run(){
-        
-        int pases = 0;
-        Random r = new Random();
-        int i = r.Next(players.Count-1);
-        
-            while(true){
-                if(endcondition.Condicion(manos,pases))break;
-                List<IFicha<T>> posibles = new List<IFicha<T>>();
-                foreach(var ficha in manos[i].Contenido){
-                    //aki va recorrer los nodos y preg si matchea cada 1 de las fichas
-                    if(matcher.matchea(ficha, tablero))posibles.Add(ficha);
+    
+    public  TableroClásico Tablero { get; }
+    public List<Player<int>> Players { get; }
+    private EndconditionClasico Endcondition;
+    private Generadorclasico Generador;
+    private DealerClasico Dealer;
+    public List<Mano<int>> Manos { get; }
+    public MatcherClasico Matcher { get; }
+    private RefereeClásico Referee { get; }
+    private GanadorCálsico Wincondition;
+    public int winner { get; set; }
+    public void run()
+    {
+        int t = 0;
 
-                }
-                if(posibles.Count==0){pases++;continue;}
-                var aux = posibles[players[i].Juega(tablero, posibles, manos[i])];
-                tablero.Add(aux); 
-                manos[i].Remove(aux);
-                pases=0; 
+        while (true)
+        {
+            var i = t % Players.Count;
+
+            var PosiblesJugadas = Referee.SacarJugadas(Tablero, Manos[i]);
+            var j = Players[i].Juega(Tablero, PosiblesJugadas, Manos[i]);
+            Referee.EfectuarJugada(PosiblesJugadas[j], Tablero, Manos[i]);
             
+            t += 1;
         }
-        winner = wincondition.DecidirGanador(manos);
-        
-
     }
 }
     

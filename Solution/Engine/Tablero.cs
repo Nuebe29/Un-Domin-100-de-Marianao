@@ -15,7 +15,7 @@ public class Nodo<T>
     public bool Jugabilidad { get; set; }
 }
 
-public interface ITablero<T> : IEnumerable<Nodo<T>>
+public interface ITablero<T> : IEnumerable<ITablero<T>>
 {
     public  Nodo<T> Hoja { get; }
     public List<TableroClásico> Ramas { get; }
@@ -33,23 +33,23 @@ public class TableroClásico : ITablero<int>
     public List<TableroClásico> Ramas { get; }
 
 
-    
-
-    public IEnumerator<Nodo<int>> GetEnumerator()
+    IEnumerator<ITablero<int>> IEnumerable<ITablero<int>>.GetEnumerator()
     {
-        return GetEnumerator();
-    }
-
-    IEnumerator<Nodo<int>> IEnumerable<Nodo<int>>.GetEnumerator()
-    {
-        yield return Hoja;
+        yield return this;
 
         foreach (var hijo in Ramas)
         {
-            foreach (Nodo<int> item in hijo)
+            foreach (TableroClásico item in hijo)
             {
                 yield return item;
             }
         }
     }
+
+    public IEnumerator GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+   
 }
