@@ -2,8 +2,8 @@
 
 
 List<Player<int>> list = new List<Player<int>>();
-list.Add(new Player<int>(Estrategias<int>.Estrategiarandom, "yo"));
-list.Add(new Player<int>(Estrategias<int>.Estrategiarandom, "tu"));
+list.Add(new Player<int>(Estrategias<int>.Botagordas, "yo"));
+list.Add(new Player<int>(Estrategias<int>.Botagordas, "tu"));
 list.Add(new Player<int>(Estrategias<int>.Estrategiarandom,"el"));
 list.Add(new Player<int>(Estrategias<int>.Estrategiarandom,"ella"));
 
@@ -11,7 +11,8 @@ list.Add(new Player<int>(Estrategias<int>.Estrategiarandom,"ella"));
 
 
 
-Engine.PartidaClásica a = new Engine.PartidaClásica( list,  6);
+
+Engine.PartidaLonganax5 a = new Engine.PartidaLonganax5( list,  6);
 var b = a.run();
 System.Console.WriteLine(b.name);
 

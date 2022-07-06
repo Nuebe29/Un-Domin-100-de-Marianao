@@ -24,3 +24,20 @@ public class GanadorCálsico : IWincondition<int>
         return ganador;
     }
 }
+public class GanadorMultiplosx5 : IWincondition<int>
+
+{
+    public List<int> Puntos{get; set;}
+    public int DecidirGanador(List<Mano<int>> list)
+    {
+        int ganador = 0;
+        int max = 0;
+        for(int i = 0; i< Puntos.Count;i++){
+            if(Puntos[i]>max){
+                max = Puntos[i];
+                ganador=i;
+            }
+        }
+        return ganador;
+    }
+}

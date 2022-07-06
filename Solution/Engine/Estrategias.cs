@@ -7,5 +7,15 @@ public static class Estrategias<T>
         Random r = new Random();
         return r.Next(posiblesjugadas.Count);
     }
+    public static int Botagordas(ITablero<T> estado, List<Movimiento<T>> posiblesjugadas, Mano<T> hand){
+        
+        int devolver = 0;
+        int peso = 0;
+        for(int i = 0; i< posiblesjugadas.Count;i++){
+            if(posiblesjugadas[i].EsPase)continue;
+            if(posiblesjugadas[i].Ficha.Peso>peso){devolver=i;peso = posiblesjugadas[i].Ficha.Peso;}
+        }
+        return devolver;
+    }
     
 }
