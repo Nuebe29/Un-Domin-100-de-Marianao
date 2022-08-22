@@ -1,31 +1,20 @@
 namespace Engine;
 
-public interface IFicha<T>
+public class Ficha<T>
 {
     public T Cara1 { get; }
     public T Cara2 { get; }
     public int Peso { get; }
-}
-
-public class FichaClásica : IFicha<int>
-{
-
-    public FichaClásica(int a, int b)
+    public Ficha(T a, T b, int peso)
     {
         Cara1 = a;
         Cara2 = b;
+        Peso = peso;
     }
-
-    public int Cara1 { get; }
-
-    public int Cara2 { get; }
-
-
-
-    public int Peso => Cara1 + Cara2;
 
     public override string ToString()
     {
         return $"[{Cara1},{Cara2}]";
     }
 }
+

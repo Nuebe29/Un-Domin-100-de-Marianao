@@ -1,18 +1,13 @@
 ﻿using Engine;
 
-
-List<Player<int>> list = new List<Player<int>>();
+List<Player<int>> list =  new List<Player<int>>();
 list.Add(new Player<int>(Estrategias<int>.Botagordas, "yo"));
-list.Add(new Player<int>(Estrategias<int>.Botagordas, "tu"));
-list.Add(new Player<int>(Estrategias<int>.Estrategiarandom,"el"));
-list.Add(new Player<int>(Estrategias<int>.Estrategiarandom,"ella"));
+list.Add(new Player<int>(Estrategias<int>.Estrategiarandom, "tu"));
+list.Add(new Player<int>(Estrategias<int>.Botagordas, "el"));
+list.Add(new Player<int>(Estrategias<int>.Botagordas, "ella"));
 
+var a = new Partida<int>(new EndconditionClasico(),new GanadorCálsico(), new MatcherLongana(), new DealerClasico(), new Generadorclasico(), list, 6, new TurnerClasico(), 7);
+a.Run();
+System.Console.WriteLine(a.Players[0].name);
 
-
-
-
-
-Engine.PartidaLonganax5 a = new Engine.PartidaLonganax5( list,  6);
-var b = a.run();
-System.Console.WriteLine(b.name);
 

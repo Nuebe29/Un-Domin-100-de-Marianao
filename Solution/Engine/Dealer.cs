@@ -1,10 +1,10 @@
 namespace Engine;
 public interface IDealer<T>{
-    public List<Mano<T>> Reparte(List<IFicha<T>> mazo, int jugadores, int cant);
+    public List<Mano<T>> Reparte(List<Ficha<T>> mazo, int jugadores, int cant);
 }
 public class DealerClasico : IDealer<int>
 {
-    public List<Mano<int>> Reparte(List<IFicha<int>> mazo, int jugadores, int cant)
+    public List<Mano<int>> Reparte(List<Ficha<int>> mazo, int jugadores, int cant)
     {
         Random r = new Random();
         List<Mano<int>> list = new List<Mano<int>>();

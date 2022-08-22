@@ -2,14 +2,17 @@
 
 public class Movimiento<T>
 {
-    public Movimiento(IFicha<T> a, Nodo<T> b, bool esPase)
+    public Movimiento(T value,Ficha<T> a, Nodo<T> b, bool esPase)
     {
         Ficha = a;
         Nodo  = b;
         EsPase = esPase;
+        Entrada = value;
     }
     
     public bool EsPase { get; }
-    public IFicha<T> Ficha { get; }
+    public Ficha<T> Ficha { get; }
     public Nodo<T> Nodo { get; }
+    public T Entrada{get;}
+    
 }

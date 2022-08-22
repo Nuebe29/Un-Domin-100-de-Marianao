@@ -3,43 +3,56 @@
 namespace Engine;
 public class Nodo<T>
 {
-    public Nodo(T entrada, int turno)
+    public Nodo()
+    {
+        Turno = -1;
+        Jugabilidad = true;
+    }
+
+    public Nodo(T entrada, int turno, Ficha<T> ficha, int player)
     {
         Entrada = entrada;
         Turno = turno;
         Jugabilidad = true;
+        Ficha = ficha;
+        Player = player;
     }
     
     public T Entrada { get; set; }
     public int Turno { get; }
     public bool Jugabilidad { get; set; }
-}
+    public bool Salida{get;set;}
+    public Ficha<T> Ficha;
+    public int Player;
 
-public interface ITablero<T> : IEnumerable<ITablero<T>>
-{
-    public  Nodo<T> Hoja { get; }
-    public List<TableroClásico> Ramas { get; }
-
+    
 }
-public class TableroClásico : ITablero<int>
+public class Tablero<T> : IEnumerable<Tablero<T>>
 {
-    public TableroClásico(int entrada, int turno)
+    public Tablero(T entrada, int turno, Ficha<T> ficha, int player)
     {
-        Hoja = new Nodo<int>(entrada,turno);
-        Ramas = new List<TableroClásico>();
+        Hoja = new Nodo<T>(entrada,turno,ficha, player);
+        Ramas = new List<Tablero<T>>();
     }
 
-    public  Nodo<int> Hoja { get; }
-    public List<TableroClásico> Ramas { get; }
+    public Tablero()
+    {
+        Ramas = new List<Tablero<T>>();
+        Hoja = new Nodo<T>();
+    }
+    
 
+    public  Nodo<T> Hoja { get; }
+    public List<Tablero<T>> Ramas { get; }
+    
 
-    IEnumerator<ITablero<int>> IEnumerable<ITablero<int>>.GetEnumerator()
+    IEnumerator<Tablero<T>> IEnumerable<Tablero<T>>.GetEnumerator()
     {
         yield return this;
 
         foreach (var hijo in Ramas)
         {
-            foreach (TableroClásico item in hijo)
+            foreach (Tablero<T> item in hijo)
             {
                 yield return item;
             }
@@ -52,13 +65,11 @@ public class TableroClásico : ITablero<int>
 
         foreach (var hijo in Ramas)
         {
-            foreach (TableroClásico item in hijo)
+            foreach (Tablero<T> item in hijo)
             {
                 yield return item;
             }
         }
     }
-
-   
-   
 }
+

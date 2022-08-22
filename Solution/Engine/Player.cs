@@ -9,7 +9,7 @@ public class Player<T>
         this.estrategia = a;
         this.name=name;
     }
-    public int Juega(ITablero<T> tablero, List<Movimiento<T>> posiblesjugadas, Mano<T> hand)
+    public int Juega(Tablero<T> tablero, List<Movimiento<T>> posiblesjugadas, Mano<T> hand)
     {
         return estrategia(tablero, posiblesjugadas, hand);
     }

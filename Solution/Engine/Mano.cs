@@ -4,9 +4,9 @@ public class Mano<T>
 {
     public Mano()
     {
-        Contenido = new List<IFicha<T>>();
+        Contenido = new List<Ficha<T>>();
     }
-    public List<IFicha<T>> Contenido { get; }
+    public List<Ficha<T>> Contenido { get; }
 
     public int Peso
     {
@@ -23,11 +23,11 @@ public class Mano<T>
         }
     }
 
-    public void Add(IFicha<T> ficha)
+    public void Add(Ficha<T> ficha)
     {
         Contenido.Add(ficha);
     }
-    public void Remove(IFicha<T> ficha)
+    public void Remove(Ficha<T> ficha)
     {
         Contenido.Remove(ficha);
     }
