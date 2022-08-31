@@ -70,12 +70,18 @@ public class Referee<T>{
 
         else Pases++;
     }
-    public void run(int turno){
+    public bool Run(int turno){
+        if(!Endcondition.Condicion(Manos,Pases,Tablero)){
         var LeToca = Turner.Turno(Tablero, turno, Players.Count);
             Matcher.Jugabilidad(Tablero,LeToca);
             var PosiblesJugadas = Matcher.SacarJugadas(Tablero, Manos, LeToca);
             var j = Players[LeToca].Juega(Tablero, PosiblesJugadas, Manos[LeToca]);
             EfectuarJugada(PosiblesJugadas[j], Tablero, Manos, LeToca, turno);
+            return false;
+        }
+        
+        Wincondition.Ordena(Manos, Players, Tablero);
+        return true;
     }
     
 
