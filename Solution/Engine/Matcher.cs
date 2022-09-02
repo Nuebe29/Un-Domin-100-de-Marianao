@@ -4,6 +4,7 @@ public interface IMatcher<T>
 {
 
     public bool matchea(T value, T value2);
+    public bool PuedeSalir(Ficha<T> ficha);
     public List<Movimiento<T>> SacarJugadas(Tablero<T> tablero, List<Mano<T>> manos, int i)
     {
         List<Movimiento<T>> jugadas = new List<Movimiento<T>>();
@@ -14,6 +15,17 @@ public interface IMatcher<T>
             {
                 foreach (var ficha in manos[i].Contenido)
                 {
+                    if (t.Hoja.Turno is -1)
+                    {
+                        if (PuedeSalir(ficha))
+                        {
+                            jugadas.Add(new Movimiento<T>(ficha.Cara2, ficha, t.Hoja, false));
+                            jugadas.Add(new Movimiento<T>(ficha.Cara1, ficha, t.Hoja, false));
+                        }
+                        continue;
+                    }
+
+
                     if (matchea(ficha.Cara1, t.Hoja.Entrada))
                     {
                         jugadas.Add(new Movimiento<T>(ficha.Cara2, ficha, t.Hoja, false));
@@ -51,6 +63,11 @@ public class MatcherClasico : IMatcher<int>
         if (value == value2) return true;
         return false;
     }
+    public bool PuedeSalir(Ficha<int> ficha)
+    {
+        return true;
+
+    }
 
 
 }
@@ -63,14 +80,18 @@ public class MatcherDistancia2 : IMatcher<int>
 
     public void Jugabilidad(Tablero<int> tablero, int i)
     {
-        
+
     }
 
     public bool matchea(int value, int value2)
     {
-        
+
         if (Math.Abs(value - value2) == 2) return true;
         return false;
+    }
+    public bool PuedeSalir(Ficha<int> ficha)
+    {
+        return true;
     }
 
 
@@ -87,7 +108,7 @@ public class MatcherLongana : IMatcher<int>
                 tablero.Ramas.Add(new Tablero<int>(tablero.Ramas[0].Hoja.Entrada, tablero.Ramas[0].Hoja.Turno,
                 tablero.Ramas[0].Hoja.Ficha, tablero.Ramas[0].Hoja.Player));
             }
-            foreach (Tablero<int> rama in tablero.Ramas[0].Ramas) rama.Hoja.Jugabilidad = false;
+            foreach (Tablero<int> rama in tablero.Ramas) rama.Hoja.Jugabilidad = false;
         }
         else
         {
@@ -113,5 +134,11 @@ public class MatcherLongana : IMatcher<int>
     {
         if (value == value2) return true;
         return false;
+    }
+    public bool PuedeSalir(Ficha<int> ficha)
+    {
+        if (ficha.Cara1 == ficha.Cara2) return true;
+        return false;
+
     }
 }

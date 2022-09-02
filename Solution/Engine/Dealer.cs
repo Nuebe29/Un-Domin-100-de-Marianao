@@ -1,23 +1,23 @@
 namespace Engine;
-public interface IDealer<T>{
-    public List<Mano<T>> Reparte(List<Ficha<T>> mazo, int jugadores, int cant);
-}
-public class DealerClasico : IDealer<int>
+
+
+public class Dealer<T>
 {
-    public List<Mano<int>> Reparte(List<Ficha<int>> mazo, int jugadores, int cant)
+    public List<Mano<T>> Reparte(List<Ficha<T>> mazo, int jugadores, int cant)
     {
         Random r = new Random();
-        List<Mano<int>> list = new List<Mano<int>>();
+        List<Mano<T>> list = new List<Mano<T>>();
         for(int i = 0; i< jugadores;i++){
-            list.Add(new Mano<int>());
+            list.Add(new Mano<T>());
         }
         for(int i = 0; i< jugadores;i++){
             for(int j = 0;j<cant;j++){
                 int aux = r.Next(mazo.Count);
-                list[i].Contenido.Add(mazo[aux]);
+                list[i].Add(mazo[aux]);
                 mazo.Remove(mazo[aux]);
             }
         }
         return list;
     }
+    
 }

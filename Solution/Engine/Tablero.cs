@@ -17,12 +17,14 @@ public class Nodo<T>
         Ficha = ficha;
         Player = player;
     }
+
+    public Nodo<T> Clone() => new Nodo<T>(Entrada!, Turno, Ficha!, Player);
     
-    public T Entrada { get; set; }
+    public T? Entrada { get; }
     public int Turno { get; }
     public bool Jugabilidad { get; set; }
     public bool Salida{get;set;}
-    public Ficha<T> Ficha;
+    public Ficha<T>? Ficha;
     public int Player;
 
     
@@ -40,13 +42,18 @@ public class Tablero<T> : IEnumerable<Tablero<T>>
         Ramas = new List<Tablero<T>>();
         Hoja = new Nodo<T>();
     }
+
+    private Tablero(Nodo<T> hoja)
+    {
+        Ramas = new List<Tablero<T>>();
+        Hoja = hoja.Clone();
+    }
     
 
     public  Nodo<T> Hoja { get; }
     public List<Tablero<T>> Ramas { get; }
-    
 
-    IEnumerator<Tablero<T>> IEnumerable<Tablero<T>>.GetEnumerator()
+    public IEnumerator<Tablero<T>> GetEnumerator()
     {
         yield return this;
 
@@ -59,17 +66,15 @@ public class Tablero<T> : IEnumerable<Tablero<T>>
         }
     }
 
-     public IEnumerator GetEnumerator()
-    {
-        yield return this;
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        foreach (var hijo in Ramas)
-        {
-            foreach (Tablero<T> item in hijo)
-            {
-                yield return item;
-            }
-        }
+    public Tablero<T> Clone()
+    {
+        var newTablero = new Tablero<T>(Hoja);
+        foreach (var item in Ramas)
+            newTablero.Ramas.Add(item.Clone());
+
+        return newTablero;
     }
 }
 

@@ -4,7 +4,7 @@
 public class Referee<T>{
     private IEndcondition<T> Endcondition;
     private IGenerador<T> Generador;
-    private IDealer<T> Dealer;
+    private Dealer<T> Dealer;
     public List<Mano<T>> Manos { get; }
     private IMatcher<T> Matcher { get; }
     public Tablero<T> Tablero {get; }
@@ -13,7 +13,7 @@ public class Referee<T>{
     public int Pases { get; set; }
     private ITurner<T> Turner;
 
-    public Referee(IEndcondition<T> endcondition, IWincondition<T> wincondition, IMatcher<T> matcher,IDealer<T> dealer,
+    public Referee(IEndcondition<T> endcondition, IWincondition<T> wincondition, IMatcher<T> matcher,Dealer<T> dealer,
      IGenerador<T> generador,List<Player<T>> players, T n,Tablero<T> tablero, ITurner<T> turner, int cantidad)
     {
         Endcondition = endcondition;
@@ -38,7 +38,7 @@ public class Referee<T>{
             var LeToca = Turner.Turno(Tablero, turno, Players.Count);
             Matcher.Jugabilidad(Tablero,LeToca);
             var PosiblesJugadas = Matcher.SacarJugadas(Tablero, Manos, LeToca);
-            var j = Players[LeToca].Juega(Tablero, PosiblesJugadas, Manos[LeToca]);
+            var j = Players[LeToca].Juega(Tablero, PosiblesJugadas.ToList(), Manos[LeToca].Clone());
             EfectuarJugada(PosiblesJugadas[j], Tablero, Manos, LeToca, turno);
             
             turno += 1;

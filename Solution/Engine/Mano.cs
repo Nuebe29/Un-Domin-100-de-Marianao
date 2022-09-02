@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace Engine;
 
 public class Mano<T>
@@ -27,8 +29,20 @@ public class Mano<T>
     {
         Contenido.Add(ficha);
     }
+
     public void Remove(Ficha<T> ficha)
     {
         Contenido.Remove(ficha);
+    }
+
+    public Mano<T> Clone()
+    {
+        var newMano = new Mano<T>();
+        foreach (var item in Contenido)
+        {
+            newMano.Add(item);
+        }
+
+        return newMano;
     }
 }
