@@ -11,7 +11,8 @@ public class Referee<T>{
     public List<Player<T>> Players { get; }
     private IWincondition<T> Wincondition;
     public int Pases { get; set; }
-    private ITurner<T> Turner;
+    private int Turno = -1;
+    private IEnumerator<int> turnEnumerator;
 
     public Referee(IEndcondition<T> endcondition, IWincondition<T> wincondition, IMatcher<T> matcher,Dealer<T> dealer,
      IGenerador<T> generador,List<Player<T>> players, T n,Tablero<T> tablero, ITurner<T> turner, int cantidad)
@@ -25,23 +26,22 @@ public class Referee<T>{
         Manos = Dealer.Reparte(Generador.Generamazo(n), players.Count,cantidad  );
         Tablero = tablero;
         Pases = 0;
-        Turner = turner;
+        turnEnumerator = turner.Turno(players.Count).GetEnumerator();
     }
 
     public void Run()
     {
-        int turno = 0;        
 
         while (!Endcondition.Condicion(Manos,Pases,Tablero))
         {
-            
-            var LeToca = Turner.Turno(Tablero, turno, Players.Count);
+            Turno++;
+            var LeToca = turnEnumerator.Current;
             Matcher.Jugabilidad(Tablero,LeToca);
             var PosiblesJugadas = Matcher.SacarJugadas(Tablero, Manos, LeToca);
             var j = Players[LeToca].Juega(Tablero, PosiblesJugadas.ToList(), Manos[LeToca].Clone());
-            EfectuarJugada(PosiblesJugadas[j], Tablero, Manos, LeToca, turno);
+            EfectuarJugada(PosiblesJugadas[j], Tablero, Manos, LeToca, Turno);
             
-            turno += 1;
+            turnEnumerator.MoveNext();
         }
         Wincondition.Ordena(Manos, Players, Tablero);
     }
@@ -70,13 +70,16 @@ public class Referee<T>{
 
         else Pases++;
     }
-    public bool Run(int turno){
+    public bool RunTurn(){
         if(!Endcondition.Condicion(Manos,Pases,Tablero)){
-        var LeToca = Turner.Turno(Tablero, turno, Players.Count);
+            Turno++;
+            turnEnumerator.MoveNext();
+            var LeToca = turnEnumerator.Current;
             Matcher.Jugabilidad(Tablero,LeToca);
             var PosiblesJugadas = Matcher.SacarJugadas(Tablero, Manos, LeToca);
             var j = Players[LeToca].Juega(Tablero, PosiblesJugadas, Manos[LeToca]);
-            EfectuarJugada(PosiblesJugadas[j], Tablero, Manos, LeToca, turno);
+            EfectuarJugada(PosiblesJugadas[j], Tablero, Manos, LeToca, Turno);
+            
             return false;
         }
         

@@ -10,7 +10,7 @@ public class EndconditionClasico : IEndcondition<int>
 
     public bool Condicion(List<Mano<int>> list, int pases, Tablero<int> tablero)
     {
-        if (pases == list.Count*1000) return true;
+        if (pases == list.Count) return true;
         foreach (var mano in list)
         {
             if (mano.Contenido.Count == 0) return true;
@@ -35,7 +35,7 @@ public class EndconditionPorPuntos50 : IEndcondition<int>
 
     public bool Condicion(List<Mano<int>> list, int pases, Tablero<int> tablero)
     {
-        if (pases == list.Count*1000) return true;
+        if (pases == list.Count) return true;
         int aux = 0;
         foreach (Tablero<int> nodo in tablero.Where(x => x.Hoja.Turno is not -1))
         {
@@ -63,7 +63,7 @@ public class EndconditionPorPases3 : IEndcondition<int>
 
     public bool Condicion(List<Mano<int>> list, int pases, Tablero<int> tablero)
     {
-        if (pases == list.Count*1000) return true;
+        if (pases == list.Count) return true;
         
         int aux = 0; int turnos = 0;
 

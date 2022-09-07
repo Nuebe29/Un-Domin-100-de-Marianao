@@ -13,7 +13,7 @@ public class Partida<T>
         
     }
     public void Run() => Referee.Run();
-    public bool Run(int a)=> Referee.Run(a);
+    public bool RunTurn()=> Referee.RunTurn();
     public void RecibeParametros(IEndcondition<T> endcondition, IWincondition<T> wincondition, IMatcher<T> matcher, Dealer<T> dealer,
      IGenerador<T> generador, List<Player<T>> players, T n, ITurner<T> turner, int cantidad){
         Players = players;

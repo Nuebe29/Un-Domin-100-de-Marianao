@@ -63,7 +63,7 @@ public class GanadorPorFichas : IWincondition<int>
         return devolver;
     }
 }
-public class GanadorPorPases : IWincondition<int>
+public class GanadorPorJugadas : IWincondition<int>
 {
     public int DecidirGanador(List<Mano<int>> list, Tablero<int> tablero)
     {
